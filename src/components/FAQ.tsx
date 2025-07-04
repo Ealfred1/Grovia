@@ -23,17 +23,17 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="bg-gradient-dark py-20">
+    <section className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <Button variant="pill" size="pill" className="mb-6">
+          <Button variant="pill" size="pill" className="mb-6 bg-[#28B446] text-black font-bold text-sm">
             FAQs
           </Button>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-2xl md:text-[36px] font-bold text-white mb-4">
             Find answers to your burning question
           </h2>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+          <p className="text-[24px] text-white max-w-2xl mx-auto">
             Get quick answers to common questions about Grovia's services and features
           </p>
         </div>
@@ -45,7 +45,7 @@ const FAQ = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-grovia-forest border border-grovia-primary/20 rounded-lg px-6"
+                className="bg-[#102028] shadow-[#19213D0F] shadow-xl rounded-lg px-6"
               >
                 <AccordionTrigger className="text-white hover:text-grovia-primary transition-colors py-6 text-left">
                   {faq.question}

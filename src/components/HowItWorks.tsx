@@ -1,4 +1,7 @@
 import { Button } from "@/components/ui/button";
+import profile from "@/assets/profile1.svg"
+import verify1 from "@/assets/verify1.svg"
+import card1 from "@/assets/card1.svg"
 
 const HowItWorks = () => {
   const steps = [
@@ -17,17 +20,20 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" style={{ backgroundColor: '#061311' }} className="py-20">
+    <section id="how-it-works" style={{ backgroundColor: '#061311' }} className="py-20 relative">
+      <div className="w-[200px] h-[178px] absolute right-[10%] bottom-[50%] bg-[#3BBFAD80] rounded-full blur-[60px]" />
+      <div className="w-[100px] absolute left-[10%] top-[10%] h-[138px] bg-[#3BBFAD80] rounded-full blur-[60px]" />
+      <div className="w-[258px] absolute left-[-82px] bottom-[0] h-[322px] bg-[#3BBFAD80] rounded-full blur-[60px]" />
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <Button variant="pill" size="pill" className="mb-6">
+          <Button variant="pill" size="pill" className="mb-6 bg-[#28B446] text-black font-bold text-sm">
             How it works
           </Button>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[20px] md:text-[36px] font-bold text-white mb-6">
             Simple Steps to Financial Empowerment
           </h2>
-          <p className="text-xl text-white/80 max-w-4xl mx-auto">
+          <p className="text-xl text-white font-bold max-w-[1172px] mx-auto">
             Our easy-to-follow process makes it simple for individuals and businesses to unlock the full benefits of Grovia.
           </p>
         </div>
@@ -47,21 +53,15 @@ const HowItWorks = () => {
                 
                 {/* Icon */}
                 <div className="relative z-10 mr-8">
-                  <div className="w-12 h-12 bg-grovia-primary rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center">
                     {index === 0 && (
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                      </svg>
+                     <img src={profile} alt="" className="" />
                     )}
                     {index === 1 && (
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <img src={verify1} alt="" className="" />
                     )}
                     {index === 2 && (
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-                      </svg>
+                      <img src={card1} alt="" className="" />
                     )}
                   </div>
                 </div>
@@ -69,7 +69,7 @@ const HowItWorks = () => {
                 {/* Content */}
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
-                  <p className="text-white/80 leading-relaxed text-lg">
+                  <p className="text-white leading-relaxed text-lg">
                     {step.description}
                   </p>
                 </div>

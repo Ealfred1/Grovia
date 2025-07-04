@@ -6,11 +6,12 @@ import HowItWorks from "@/components/HowItWorks";
 import Differentiators from "@/components/Differentiators";
 import Referral from "@/components/Referral";
 import FAQ from "@/components/FAQ";
+import GetStarted from "@/components/GetStarted";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-grovia-dark">
+    <div className="min-h-screen bg-[#061311] overflow-x-hidden">
       <Header />
       <Hero />
       <Partners />
@@ -19,6 +20,7 @@ const Index = () => {
       <Differentiators />
       <Referral />
       <FAQ />
+      <GetStarted />
       <Footer />
     </div>
   );

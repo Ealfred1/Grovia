@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import virtualCardImage from "@/assets/virtual-card.png";
-import savingsIcon from "@/assets/savings-icon.png";
-import loanIcon from "@/assets/loan-icon.png";
+import virtualCardImage from "@/assets/cards.svg";
+import savingsIcon from "@/assets/savings.svg";
+import loanIcon from "@/assets/loan.svg";
+import insetBgImage from "@/assets/bggreen.svg"
 
 const Features = () => {
   return (
@@ -10,78 +11,93 @@ const Features = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <Button variant="pill" size="pill" className="mb-6">
+          <Button variant="pill" size="pill" className="mb-6 bg-[#28B446] text-black font-bold text-sm">
             Features & Services
           </Button>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-[25px] md:text-[36px] font-bold text-white mb-1">
             Unlock the full power of Grovia
           </h2>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+          <p className="text-[24px] text-white max-w-[798px] font-nold mx-auto">
             Generate and manage virtual cards for seamless and safe online payments.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Virtual Card */}
-          <Card className="bg-grovia-forest border-grovia-primary/20 lg:col-span-2 lg:row-span-2">
-            <CardContent className="p-8">
-              <div className="flex flex-col lg:flex-row items-center gap-8">
-                <div className="lg:w-1/2">
-                  <h3 className="text-3xl font-bold text-white mb-4">Virtual Card</h3>
-                  <p className="text-text-secondary mb-6">
-                    Grovia's virtual card gives you the power to make secure online
-                    transactions without the risk of exposing your physical bank details.
-                    Instantly generate a digital card through the Grovia app for payments,
-                    subscriptions, and business expenses.
-                  </p>
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* Virtual Card - spans both columns */}
+          <div className="md:col-span-2">
+            <Card className="bg-[#1D252C] overflow-hidden relative border-none min-h-[400px] shadow-none">
+              <CardContent className="">
+                <div className="flex flex-col lg:flex-row items-center gap-8">
+                  <div className="lg:w-1/2 h-full pt-32 px-8 flex justify-center flex-col">
+                    <h3 className="text-3xl font-bold text-white mb-4">Virtual Card</h3>
+                    <p className="text-text-secondary leading-10 mb-6">
+                      Grovia's virtual card gives you the power to make secure online
+                      transactions without the risk of exposing your physical bank details.
+                      Instantly generate a digital card through the Grovia app for payments,
+                      subscriptions, and business expenses.
+                    </p>
+                  </div>
+                  <div className="lg:w-1/2 absolute right-0 bottom-0 h-[400px] flex justify-center">
+                    <img 
+                      src={virtualCardImage} 
+                      alt="Grovia Virtual Card" 
+                      className="w-full h-full rounded-xl"
+                      draggable="false"
+                    />
+                  </div>
                 </div>
-                <div className="lg:w-1/2 flex justify-center">
-                  <img 
-                    src={virtualCardImage} 
-                    alt="Grovia Virtual Card" 
-                    className="w-full max-w-sm rounded-xl shadow-glow"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
+              </CardContent>
+            </Card>
+          </div>
           {/* Save & Transfer */}
-          <Card className="bg-gradient-blue border-grovia-blue/20">
-            <CardContent className="p-8 text-center">
-              <div className="mb-6">
-                <img 
-                  src={savingsIcon} 
-                  alt="Savings Icon" 
-                  className="w-20 h-20 mx-auto"
-                />
+          <Card className="bg-[#011B33] h-[400px] rounded-[20px] shadow-none border-none relative overflow-hidden">
+            <CardContent className="h-full flex items-center pl-8 pr-0 relative">
+              <div className="w-3/5">
+                <h3 className="text-[40px] font-bold text-white mb-4 text-left">Save & Transfer</h3>
+                <p className="text-white text-[17px] leading-10 text-left">
+                  Grovia makes saving money and sending funds
+                  simple, fast, and rewarding. Whether you're
+                  building your financial future.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Save & Transfer</h3>
-              <p className="text-text-secondary">
-                Grovia makes saving money and sending funds
-                simple, fast, and rewarding. Whether you're
-                building your financial future.
-              </p>
+              <div className="w-[100px] h-[138px] absolute right-[10%] bottom-[50%] bg-[#3BBFAD80] rounded-full blur-[60px]" />
+              <div className="w-[100px] absolute right-[30%] bottom-[10%] h-[138px] bg-[#3BBFAD80] rounded-full blur-[60px]" />
+              <img 
+                src={savingsIcon} 
+                alt="Savings Icon" 
+                className="w-40 h-40 absolute bottom-5 right-5"
+                draggable="false"
+              />
             </CardContent>
           </Card>
-
           {/* Loan */}
-          <Card className="bg-gradient-green border-grovia-primary/20">
-            <CardContent className="p-8 text-center">
-              <div className="mb-6">
+          <Card className="bg-gradient-green h-[400px] rounded-[20px] shadow-none border-none relative overflow-hidden">
+            <CardContent className="h-full flex flex-row items-center p-0 relative">
+              {/* Inset image covering right 50% of the card */}
+              <img
+                src={insetBgImage}
+                alt=""
+                className="absolute inset-0 left-[20%] z-0"
+                draggable="false"
+                style={{ pointerEvents: "none" }}
+              />
+              <div className="w-1/2 h-full flex flex-col justify-center pl-8 relative z-10">
+                <h3 className="text-[40px] font-bold text-black mb-4 text-left">Loan</h3>
+                <p className="text-black leading-10 text-[17px] text-left">
+                  Grovia provides affordable,
+                  flexible loans tailored to your
+                  savings and capacity.
+                </p>
+              </div>
+              <div className="w-1/2 h-full absolute right-0 bottom-0 flex items-end justify-center z-10">
                 <img 
                   src={loanIcon} 
                   alt="Loan Icon" 
-                  className="w-20 h-20 mx-auto"
+                  className="mb-8 mr-8"
+                  draggable="false"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Loan</h3>
-              <p className="text-text-secondary">
-                Grovia provides affordable,
-                flexible loans tailored to your
-                savings and capacity.
-              </p>
             </CardContent>
           </Card>
         </div>
