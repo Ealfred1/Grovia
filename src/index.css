@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Grovia Design System - All colors must be HSL */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --grovia-dark: 160 15% 8%;
+    --grovia-forest: 160 20% 12%;
+    --grovia-primary: 145 65% 48%;
+    --grovia-accent: 145 70% 55%;
+    --grovia-blue: 210 100% 45%;
+    --grovia-blue-light: 210 100% 85%;
+    
+    /* Text Colors */
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 85%;
+    --text-muted: 0 0% 65%;
+    
+    /* Background Gradients */
+    --gradient-dark: linear-gradient(180deg, hsl(160 15% 8%) 0%, hsl(160 20% 12%) 100%);
+    --gradient-forest: linear-gradient(135deg, hsl(160 15% 8%) 0%, hsl(160 25% 15%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(210 100% 25%) 0%, hsl(210 100% 45%) 100%);
+    --gradient-green: linear-gradient(135deg, hsl(145 65% 38%) 0%, hsl(145 70% 55%) 100%);
+    --gradient-subtle: linear-gradient(180deg, transparent 0%, hsl(160 15% 8% / 0.1) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 24px hsl(160 15% 8% / 0.15);
+    --shadow-medium: 0 8px 32px hsl(160 15% 8% / 0.25);
+    --shadow-glow: 0 0 40px hsl(145 65% 48% / 0.3);
+    
+    /* Standard system colors */
+    --background: 160 15% 8%;
+    --foreground: 0 0% 100%;
+    --card: 160 20% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 160 20% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 145 65% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 25% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 160 25% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 145 65% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 160 25% 20%;
+    --input: 160 25% 20%;
+    --ring: 145 65% 48%;
+    --radius: 0.75rem;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease-out;
+    --transition-slow: all 0.5s ease-out;
+    
+    /* Sidebar Colors */
+    --sidebar-background: 160 15% 8%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 145 65% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 25% 15%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 160 25% 20%;
+    --sidebar-ring: 145 65% 48%;
+  }
+
+  .dark {
+    /* Use same colors as light mode for Grovia */
+    --background: 160 15% 8%;
+    --foreground: 0 0% 100%;
+    --card: 160 20% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 160 20% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 145 65% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 25% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 160 25% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 145 65% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 160 25% 20%;
+    --input: 160 25% 20%;
+    --ring: 145 65% 48%;
+    --sidebar-background: 160 15% 8%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 145 65% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 25% 15%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 160 25% 20%;
+    --sidebar-ring: 145 65% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--grovia-dark));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--grovia-primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--grovia-accent));
+  }
+}
