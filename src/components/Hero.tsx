@@ -2,9 +2,38 @@ import { Button } from "@/components/ui/button";
 import Playstore from "@/assets/icon/playstore.svg"
 import Appstore from "@/assets/icon/appstore.svg"
 import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 
 const Hero = () => {
+  const headlineRef = useRef(null);
+  const subheadingRef = useRef(null);
+  const buttonsRef = useRef(null);
+
+  useEffect(() => {
+    gsap.from(headlineRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      ease: "power3.out",
+    });
+    gsap.from(subheadingRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      delay: 0.3,
+      ease: "power3.out",
+    });
+    gsap.from(buttonsRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      delay: 0.6,
+      ease: "power3.out",
+    });
+  }, []);
+
   return (
     <section className="min-h-screen flex pt-20 relative overflow-hidden" style={{ backgroundColor: '#061311' }}>
       {/* Grid Pattern Overlay */}
@@ -61,21 +90,29 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="text-center max-w-[1183px] mx-auto">
           {/* Main Headline */}
-          <h1 className="text-[20px] md:text-[30px] lg:text-[50px] font-bold text-white max-w-[1183px] mb-6 leading-tight">
+          <h1
+            ref={headlineRef}
+            className="text-[20px] md:text-[30px] lg:text-[50px] font-bold text-white max-w-[1183px] mb-6 leading-tight"
+          >
             A next-generation, tech-powered cooperative transforming individuals and small businesses
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-[18px] text-white font-bold mb-12 whitespace-nowrap max-w-[528px] mx-auto">
+          <p
+            ref={subheadingRef}
+            className="text-xl md:text-[18px] text-white font-bold mb-12 lg:whitespace-nowrap lg:max-w-[528px] mx-auto"
+          >
             Building Africa's most trusted cooperative fintech community
           </p>
 
           {/* App Download Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div
+            ref={buttonsRef}
+            className="flex sm:flex-row gap-4 justify-center items-center"
+          >
             <Link to="#" className="hover:opacity-70">
-             <img src={Playstore} alt="" className="" draggable="false" />
+              <img src={Playstore} alt="" className="" draggable="false" />
             </Link>
-
             <Link to="#" className="hover:opacity-70">
               <img src={Appstore} alt="" className="" draggable="false" />
             </Link>

@@ -30,10 +30,10 @@ const HowItWorks = () => {
           <Button variant="pill" size="pill" className="mb-6 bg-[#28B446] text-black font-bold text-sm">
             How it works
           </Button>
-          <h2 className="text-[20px] md:text-[36px] font-bold text-white mb-6">
+          <h2 className="text-[18px] md:text-[36px] font-bold text-white mb-6">
             Simple Steps to Financial Empowerment
           </h2>
-          <p className="text-xl text-white font-bold max-w-[1172px] mx-auto">
+          <p className="text-base md:text-xl text-white font-bold max-w-[1172px] mx-auto">
             Our easy-to-follow process makes it simple for individuals and businesses to unlock the full benefits of Grovia.
           </p>
         </div>
@@ -68,8 +68,8 @@ const HowItWorks = () => {
                 
                 {/* Content */}
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
-                  <p className="text-white leading-relaxed text-lg">
+                  <h3 className="text-lg md:text-2xl font-bold text-white mb-4">{step.title}</h3>
+                  <p className="text-white leading-relaxed text-sm md:text-lg">
                     {step.description}
                   </p>
                 </div>

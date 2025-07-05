@@ -56,11 +56,11 @@ const Differentiators = () => {
             <div className="w-[258px] absolute right-[-82px] z-[-1] bottom-[0] h-[322px] bg-[#3BBFAD80] rounded-full blur-[60px]" />
             
             {/* Features Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 h-full">
+            <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:gap-8 h-full">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex flex-col py-4 px-5 rounded-[24px]"
+                  className="flex flex-col scale-[0.9] lg:scale-[1] py-4 px-5 rounded-[24px]"
                   style={{
                     backgroundColor: '#000',
                     boxShadow: '0px 1px 6px 0px #00000005',
