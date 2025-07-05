@@ -4,6 +4,10 @@ import virtualCardImage from "@/assets/cards.svg";
 import savingsIcon from "@/assets/savings.svg";
 import loanIcon from "@/assets/loan.svg";
 import insetBgImage from "@/assets/bggreen.svg"
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const featuresData = [
   {
@@ -36,11 +40,34 @@ const featuresData = [
 ];
 
 function MobileFeatures() {
+  const headerRef = useRef(null);
+  const cardRefs = useRef([]);
+  useEffect(() => {
+    gsap.from(headerRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+      },
+    });
+    gsap.from(cardRefs.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+      },
+    });
+  }, []);
   return (
     <section id="features" className="bg-gradient-dark py-10 md:hidden">
       <div className="container mx-auto px-2 flex flex-col gap-8">
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-6" ref={headerRef}>
           <Button variant="pill" size="pill" className="mb-6 bg-[#28B446] text-black font-bold text-sm">
             Features & Services
           </Button>
@@ -53,7 +80,11 @@ function MobileFeatures() {
         </div>
         {/* Features List */}
         {featuresData.map((feature, idx) => (
-          <Card key={feature.title} className={`${feature.cardClass} rounded-[24px] shadow-none border-none p-6`}>
+          <Card
+            key={feature.title}
+            className={`${feature.cardClass} rounded-[24px] shadow-none border-none p-6`}
+            ref={el => cardRefs.current[idx] = el}
+          >
             <CardContent className="flex flex-col items-center text-center">
               <img src={feature.image} alt={feature.imageAlt} className="mb-6" draggable="false" />
               <h3 className="text-2xl font-bold mb-4 text-center ${feature.textClass}">{feature.title}</h3>
@@ -67,13 +98,36 @@ function MobileFeatures() {
 }
 
 const Features = () => {
+  const headerRef = useRef(null);
+  const cardRefs = useRef([]);
+  useEffect(() => {
+    gsap.from(headerRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+      },
+    });
+    gsap.from(cardRefs.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+      },
+    });
+  }, []);
   return (
     <>
       {/* Desktop Version */}
       <section id="features" className="bg-gradient-dark py-20 hidden md:block">
         <div className="container mx-auto px-4">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" ref={headerRef}>
             <Button variant="pill" size="pill" className="mb-6 bg-[#28B446] text-black font-bold text-sm">
               Features & Services
             </Button>
@@ -88,33 +142,31 @@ const Features = () => {
         {/* Features Grid */}
           <div className="grid gap-8 md:grid-cols-2">
             {/* Virtual Card - spans both columns */}
-            <div className="md:col-span-2">
-              <Card className="bg-[#1D252C] overflow-hidden relative border-none min-h-[400px] shadow-none">
-                <CardContent className="">
-              <div className="flex flex-col lg:flex-row items-center gap-8">
-                    <div className="lg:w-1/2 h-full pt-32 px-8 flex justify-center flex-col">
-                  <h3 className="text-3xl font-bold text-white mb-4">Virtual Card</h3>
-                      <p className="text-text-secondary leading-10 mb-6">
-                    Grovia's virtual card gives you the power to make secure online
-                    transactions without the risk of exposing your physical bank details.
-                    Instantly generate a digital card through the Grovia app for payments,
-                    subscriptions, and business expenses.
-                  </p>
+            <Card ref={el => cardRefs.current[0] = el} className="md:col-span-2 bg-[#1D252C] overflow-hidden relative border-none min-h-[400px] shadow-none">
+              <CardContent className="">
+                <div className="flex flex-col lg:flex-row items-center gap-8">
+                  <div className="lg:w-1/2 h-full pt-32 px-8 flex justify-center flex-col">
+                    <h3 className="text-3xl font-bold text-white mb-4">Virtual Card</h3>
+                    <p className="text-text-secondary leading-10 mb-6">
+                      Grovia's virtual card gives you the power to make secure online
+                      transactions without the risk of exposing your physical bank details.
+                      Instantly generate a digital card through the Grovia app for payments,
+                      subscriptions, and business expenses.
+                    </p>
+                  </div>
+                  <div className="lg:w-1/2 absolute right-0 bottom-0 h-[400px] flex justify-center">
+                    <img 
+                      src={virtualCardImage} 
+                      alt="Grovia Virtual Card" 
+                      className="w-full h-full rounded-xl"
+                      draggable="false"
+                    />
+                  </div>
                 </div>
-                    <div className="lg:w-1/2 absolute right-0 bottom-0 h-[400px] flex justify-center">
-                  <img 
-                    src={virtualCardImage} 
-                    alt="Grovia Virtual Card" 
-                        className="w-full h-full rounded-xl"
-                        draggable="false"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-            </div>
-          {/* Save & Transfer */}
-            <Card className="bg-[#011B33] h-[400px] rounded-[20px] shadow-none border-none relative overflow-hidden">
+              </CardContent>
+            </Card>
+            {/* Save & Transfer */}
+            <Card ref={el => cardRefs.current[1] = el} className="bg-[#011B33] h-[400px] rounded-[20px] shadow-none border-none relative overflow-hidden">
               <CardContent className="h-full flex items-center pl-8 pr-0 relative">
                 <div className="w-3/5">
                   <h3 className="text-[40px] font-bold text-white mb-4 text-left">Save & Transfer</h3>
@@ -132,10 +184,10 @@ const Features = () => {
                   className="w-40 h-40 absolute bottom-5 right-5"
                   draggable="false"
                 />
-            </CardContent>
-          </Card>
-          {/* Loan */}
-            <Card className="bg-gradient-green h-[400px] rounded-[20px] shadow-none border-none relative overflow-hidden">
+              </CardContent>
+            </Card>
+            {/* Loan */}
+            <Card ref={el => cardRefs.current[2] = el} className="bg-gradient-green h-[400px] rounded-[20px] shadow-none border-none relative overflow-hidden">
               <CardContent className="h-full flex flex-row items-center p-0 relative">
                 {/* Inset image covering right 50% of the card */}
                 <img
@@ -148,10 +200,10 @@ const Features = () => {
                 <div className="w-1/2 h-full flex flex-col justify-center pl-8 relative z-10">
                   <h3 className="text-[40px] font-bold text-black mb-4 text-left">Loan</h3>
                   <p className="text-black leading-10 text-[17px] text-left">
-                Grovia provides affordable,
-                flexible loans tailored to your
-                savings and capacity.
-              </p>
+                    Grovia provides affordable,
+                    flexible loans tailored to your
+                    savings and capacity.
+                  </p>
                 </div>
                 <div className="w-1/2 h-full absolute right-0 bottom-0 flex items-end justify-center z-10">
                   <img 
@@ -161,11 +213,11 @@ const Features = () => {
                     draggable="false"
                   />
                 </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
       {/* Mobile Version */}
       <MobileFeatures />
     </>

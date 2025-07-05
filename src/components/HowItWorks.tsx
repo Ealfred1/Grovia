@@ -2,6 +2,10 @@ import { Button } from "@/components/ui/button";
 import profile from "@/assets/profile1.svg"
 import verify1 from "@/assets/verify1.svg"
 import card1 from "@/assets/card1.svg"
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const HowItWorks = () => {
   const steps = [
@@ -19,6 +23,30 @@ const HowItWorks = () => {
     }
   ];
 
+  const headerRef = useRef(null);
+  const stepRefs = useRef([]);
+  useEffect(() => {
+    gsap.from(headerRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+      },
+    });
+    gsap.from(stepRefs.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      stagger: 0.18,
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 80%",
+      },
+    });
+  }, []);
+
   return (
     <section id="how-it-works" style={{ backgroundColor: '#061311' }} className="py-20 relative">
       <div className="w-[200px] h-[178px] absolute right-[10%] bottom-[50%] bg-[#3BBFAD80] rounded-full blur-[60px]" />
@@ -26,7 +54,7 @@ const HowItWorks = () => {
       <div className="w-[258px] absolute left-[-82px] bottom-[0] h-[322px] bg-[#3BBFAD80] rounded-full blur-[60px]" />
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" ref={headerRef}>
           <Button variant="pill" size="pill" className="mb-6 bg-[#28B446] text-black font-bold text-sm">
             How it works
           </Button>
@@ -42,7 +70,11 @@ const HowItWorks = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {steps.map((step, index) => (
-              <div key={index} className="relative flex items-start mb-12 last:mb-0">
+              <div
+                key={index}
+                className="relative flex items-start mb-12 last:mb-0"
+                ref={el => stepRefs.current[index] = el}
+              >
                 {/* Timeline Line */}
                 {index < steps.length - 1 && (
                   <div 
